@@ -6,7 +6,9 @@ Particle Filter Project Using [[https://github.com/udacity/self-driving-car-sim/
 
 * Visualization
 ** GIF
+#+BEGIN_CENTER
 [[./assets/particle_filter_run.gif]]
+#+END_CENTER
 
 ** UML
 *** Class Diagram
