@@ -19,7 +19,7 @@ Particle Filter Project Using [Udacity's simulator](https://github.com/udacity/s
 ## GIF<a id="sec-2-1"></a>
 
 <div align="center">
-<img src="assets/particle_filter_run.gif" width="320" />
+<img src="assets/particle_filter_run.gif" width="512" />
 </div>
 
 ## UML<a id="sec-2-2"></a>
@@ -27,11 +27,13 @@ Particle Filter Project Using [Udacity's simulator](https://github.com/udacity/s
 ### Class Diagram<a id="sec-2-2-1"></a>
 
 <div align="center">
-![img](assets/uml.png)
+![img](./assets/uml.png)
 </div>
+
 ### Sequence Diagram<a id="sec-2-2-2"></a>
+
 <div align="center">
-![img](assets/sequence.png)
+![img](./assets/sequence.png)
 </div>
 
 # BUILD<a id="sec-3"></a>
