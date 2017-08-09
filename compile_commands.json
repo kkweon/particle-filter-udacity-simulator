@@ -1,0 +1,12 @@
+[
+{
+  "directory": "/home/kkweon/github/carnd/2_term/ParticleFilter",
+  "command": "/usr/bin/c++       -std=c++1z -o CMakeFiles/particle_filter.dir/src/particle_filter.cpp.o -c /home/kkweon/github/carnd/2_term/ParticleFilter/src/particle_filter.cpp",
+  "file": "/home/kkweon/github/carnd/2_term/ParticleFilter/src/particle_filter.cpp"
+},
+{
+  "directory": "/home/kkweon/github/carnd/2_term/ParticleFilter",
+  "command": "/usr/bin/c++       -std=c++1z -o CMakeFiles/particle_filter.dir/src/main.cpp.o -c /home/kkweon/github/carnd/2_term/ParticleFilter/src/main.cpp",
+  "file": "/home/kkweon/github/carnd/2_term/ParticleFilter/src/main.cpp"
+}
+]
