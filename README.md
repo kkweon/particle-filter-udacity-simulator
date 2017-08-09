@@ -27,13 +27,13 @@ Particle Filter Project Using [Udacity's simulator](https://github.com/udacity/s
 ### Class Diagram<a id="sec-2-2-1"></a>
 
 <div align="center">
-![img](./assets/uml.png)
+<img src="assets/uml.png" />
 </div>
 
 ### Sequence Diagram<a id="sec-2-2-2"></a>
 
 <div align="center">
-![img](./assets/sequence.png)
+<img src="assets/sequence.png" />
 </div>
 
 # BUILD<a id="sec-3"></a>
