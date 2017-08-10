@@ -6,10 +6,14 @@ Particle Filter Project Using [[https://github.com/udacity/self-driving-car-sim/
 
 * Visualization
 ** GIF
-#+BEGIN_CENTER
-#+ATTR_HTML: :width 512px
-[[./assets/particle_filter_run.gif]]
-#+END_CENTER
+
+#+BEGIN_HTML
+<div align="center">
+  <img src="./assets/particle_filter_run.gif" width="512px" />
+</div>
+#+END_HTML
+
+
 
 ** UML
 *** Class Diagram
