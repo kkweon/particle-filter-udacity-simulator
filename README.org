@@ -12,131 +12,14 @@ Particle Filter Project Using [[https://github.com/udacity/self-driving-car-sim/
 
 ** UML
 *** Class Diagram
-#+BEGIN_SRC plantuml :file assets/uml.png
-skinparam monochrome true
-skinparam defaultFontName D2Coding
-skinparam defaultFontSize 18
-
-package helper_functions.h { 
-  class control_s {
-   + velocity: double
-   + yawrate: double
-  }
-
-  class ground_truth {
-   + x: double
-   + y: double
-   + theta: double
-  }
-
-  class LandmarkObs {
-   + id: int
-   + x: double
-   + y: double
-  }
-  class functions {
-   + dist(x1, y1, x2, y2): double
-   + getError(gt_x, gt_y, gt_theta, pf_x, pf_y, pf_theta): double*
-  }
-}
-
-package map.h {
-  class single_landmark_s {
-    + id_i: int
-    + x_f: float
-    + y_f: float
-  }
-  class Map {
-    + landmark_list: vector<single_landmark_s>
-  }
-}
-
-package particle_filter.h {
-  class Particle {
-    + id: int
-    + x: double
-    + y: double
-    + theta: double
-    + weight: double
-    + associations: vector<int>
-    + sense_x: vector<double>
-    + sense_y: vector<double>
-  }
-
-  class ParticleFilter {
-    - num_particles: int
-    - is_initialized: bool
-    - weights: vector<double>
-    + particles: vector<Particle>
-    + init(x, y, theta, std[])
-    + prediction(delta_t, std_pos[], velocity, yaw_rate)
-    + dataAssociation(predicted: vector<LandmarkObs>, observations: vector<LandmarkObs>)
-    + updateWeights(sensor_range, std_landmark[], observations: vector<LandmarkObs>, map_landmarks: Map) 
-    + resample()
-    + SetAssociations(particle: Particle, associations: vector<int>, sense_x: vector<double>, sense_y: vector<double>): Particle
-    + getAssociations(best: Particle): string
-    + getSenseX(best: Particle): string
-    + getSenseY(best: Particle): string
-    + initialized() const: bool
-  }
-}
-
-ParticleFilter "1" *-- "many" Particle :has
-ParticleFilter ..> LandmarkObs : uses
-
-
-Map *-- single_landmark_s :has
-#+END_SRC
-
-#+RESULTS:
+#+BEGIN_CENTER
 [[file:assets/uml.png]]
+#+END_CENTER
 
 *** Sequence Diagram
-#+BEGIN_SRC plantuml :file assets/sequence.png
-actor main
-participant ParticleFilter as pf
-participant Particle as particle
-participant LandmarkObs as landmark
-
-main --> pf: Create
-activate pf
-
-loop when receive an event
-  alt pf not initialized 
-    main --> pf: Call pf.init() with initial sensor data
-    pf --> particle: Generate particles
-    activate particle
-    pf --> pf: Set is_initialized = true
-  else Initialized
-    main --> pf: Call pf.prediction() next state
-    pf --> particle: Update particles' positions
-    
-  end
-  
-  main --> main: Prepare noisy observation
-  
-  main --> pf: Call updateWeights()
-  pf --> landmark: Find Landmarks within the sensor range
-  activate landmark
-
-  pf --> pf: Rotate observation (x', y') to the global coordinate (x, y)
-  
-  pf --> particle: Update weights of each particle (How likely observation based on the predicted landmark)
-  main --> pf: Call resample()
-
-  main --> main: Print highest weight and average weight
-end
-
-
-deactivate particle
-deactivate pf
-
-
-
-#+END_SRC
-
-#+RESULTS:
+#+BEGIN_CENTER
 [[file:assets/sequence.png]]
+#+END_CENTER
 
 * BUILD
 ** Dependencies

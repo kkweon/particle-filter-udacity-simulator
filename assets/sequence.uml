@@ -1,0 +1,37 @@
+actor main
+participant ParticleFilter as pf
+participant Particle as particle
+participant LandmarkObs as landmark
+
+main --> pf: Create
+activate pf
+
+loop when receive an event
+  alt pf not initialized 
+    main --> pf: Call pf.init() with initial sensor data
+    pf --> particle: Generate particles
+    activate particle
+    pf --> pf: Set is_initialized = true
+  else Initialized
+    main --> pf: Call pf.prediction() next state
+    pf --> particle: Update particles' positions
+    
+  end
+  
+  main --> main: Prepare noisy observation
+  
+  main --> pf: Call updateWeights()
+  pf --> landmark: Find Landmarks within the sensor range
+  activate landmark
+
+  pf --> pf: Rotate observation (x', y') to the global coordinate (x, y)
+  
+  pf --> particle: Update weights of each particle (How likely observation based on the predicted landmark)
+  main --> pf: Call resample()
+
+  main --> main: Print highest weight and average weight
+end
+
+
+deactivate particle
+deactivate pf
